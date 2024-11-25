@@ -1,32 +1,21 @@
-import mongoose from "mongoose";
+import { Contact } from "../models/contacts.js";
 
-const contactSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-    },
-    isFavourite: {
-      type: Boolean,
-      default: false,
-    },
-    contactType: {
-      type: String,
-      enum: ["work", "home", "personal"],
-      required: true,
-      default: "personal",
-    },
-  },
-  {
-    timestamps: true,
-  },
-);
+export function getContacts() {
+  return Contact.find();
+}
 
-export const Contact = mongoose.model("Contact", contactSchema);
+export function getContact(contactId) {
+  return Contact.findById(contactId);
+}
+
+export function createContact(contact) {
+  return Contact.create(contact);
+}
+
+export function deleteContact(contactId) {
+  return Contact.findByIdAndDelete(contactId);
+}
+
+export function updateContact(contactId, contact) {
+  return Contact.findByIdAndUpdate(contactId, contact, { new: true });
+}
