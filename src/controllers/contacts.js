@@ -58,7 +58,7 @@ export async function deleteContactController(req, res) {
     throw new createHttpError.NotFound("Contact not found");
   }
 
-  res.send({ status: 204 });
+  res.status(204).send();
 }
 
 export async function updateContactController(req, res) {
