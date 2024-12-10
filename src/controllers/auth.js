@@ -9,7 +9,9 @@ export async function registerController(req, res) {
 
   const registeredUser = await registerUser(payload);
 
-  res.send({ status: 201, message: "Successfully registered a user!", data: registeredUser });
+  res
+    .status(201)
+    .send({ status: 201, message: "Successfully registered a user!", data: registeredUser });
 }
 
 export async function loginController(req, res) {
