@@ -1,3 +1,4 @@
+import path from "node:path";
 import express from "express";
 import pino from "pino-http";
 import cors from "cors";
@@ -13,6 +14,8 @@ const PORT = process.env.PORT || 3000;
 
 export function setupServer() {
   const app = express();
+
+  app.use("/photos", express.static(path.resolve("src/public/photos")));
 
   app.use(cors());
   app.use(cookieParser());
