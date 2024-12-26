@@ -1,0 +1,74 @@
+tags:
+  - Contacts
+summary: Create contact
+operationId: createContact
+description: Create contact
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - contactType
+          - userId
+        properties:
+          name:
+            description: "Contact's name"
+            type: string
+            example: "John Doe"
+          phoneNumber:
+            description: "Contact's phone number"
+            type: string
+            example: "+380503335599"
+          email:
+            description: "Contact's email"
+            type: string
+            example: "johndoe@gmail.com"
+          isFavourite:
+            description: "Defines if the contact is marked as favourite"
+            type: boolean
+            example: false
+            default: false
+          contactType:
+            description: "The category of the contact"
+            type: string
+            enum: ["work", "home", "personal"]
+            example: "personal"
+            default: "personal"
+          userId:
+            description: "Contact's owner id"
+            type: string
+            example: 66a92312c1de214c68f17d10
+          photo:
+            description: "URL to contact's photo"
+            type: string
+            format: binary
+            example: "https://res.cloudinary.com/dha4xvgfi/image/upload/v1724438545/g3n05nth0sgqzyakh0dm.jpg"
+responses:
+  "201":
+    description: Create a contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Contact created successfully
+            data:
+              $ref: ../../components/schemas/contact.yaml
+  "401":
+    $ref: ../../components/responses/401.yaml
+  "500":
+    $ref: ../../components/responses/500.yaml
