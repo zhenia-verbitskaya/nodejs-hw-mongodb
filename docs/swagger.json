@@ -11,7 +11,12 @@
   },
   "servers": [
     {
-      "url": "http://127.0.0.1:8080"
+      "url": "https://contacts-app-a3rg.onrender.com",
+      "description": "Production server"
+    },
+    {
+      "url": "http://127.0.0.1:8080",
+      "description": "Local server"
     }
   ],
   "tags": [
@@ -73,6 +78,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -214,52 +222,6 @@
                               "format": "date-time",
                               "example": "2024-08-29T20:39:40.775Z",
                               "description": "The date and time when the contact was last updated"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Contact successfully created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 201
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully created the contact"
-                    },
-                    "data": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/contact"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "_id": {
-                              "type": "string",
-                              "example": "66cb5f4d0318528063e77c98"
-                            },
-                            "createdAt": {
-                              "type": "string",
-                              "format": "date-time",
-                              "example": "2024-08-29T20:39:40.775Z"
-                            },
-                            "updatedAt": {
-                              "type": "string",
-                              "format": "date-time",
-                              "example": "2024-08-29T20:39:40.775Z"
                             }
                           }
                         }
@@ -450,6 +412,9 @@
                 }
               }
             }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -555,6 +520,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -724,6 +692,9 @@
           },
           "404": {
             "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         }
       }
@@ -799,6 +770,48 @@
       }
     },
     "responses": {
+      "400": {
+        "description": "Bad request error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "message": {
+                  "type": "string",
+                  "example": "BadRequestError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message",
+                    "errors"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Bad request, body parameters are incorrect"
+                    },
+                    "errors": {
+                      "type": "string",
+                      "example": "Field is required"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "401": {
         "description": "Unauthorized Error",
         "content": {

@@ -10,8 +10,11 @@ tags:
   - name: Contacts
     description: Operations with contacts
 servers:
-  - url: http://127.0.0.1:8080
   - url: https://contacts-app-a3rg.onrender.com
+    description: Production server
+  - url: http://127.0.0.1:8080
+    description: Local server
+
 paths:
   /contacts/{contactId}:
     get:
