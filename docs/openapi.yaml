@@ -11,6 +11,7 @@ tags:
     description: Operations with contacts
 servers:
   - url: http://127.0.0.1:8080
+  - url: https://contacts-app-a3rg.onrender.com
 paths:
   /contacts/{contactId}:
     get:

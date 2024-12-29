@@ -62,3 +62,5 @@ responses:
                 message:
                   type: string
                   example: Contact not found
+  "500":
+    $ref: ../../../components/responses/500.yaml

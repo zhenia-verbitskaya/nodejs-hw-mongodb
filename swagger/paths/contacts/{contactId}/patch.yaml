@@ -70,36 +70,6 @@ responses:
                       format: date-time
                       example: "2024-08-29T20:39:40.775Z"
                       description: "The date and time when the contact was last updated"
-
-  "201":
-    description: Contact successfully created
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            status:
-              type: integer
-              example: 201
-            message:
-              type: string
-              example: Successfully created the contact
-            data:
-              allOf:
-                - $ref: "../../../components/schemas/contact.yaml"
-                - type: object
-                  properties:
-                    _id:
-                      type: string
-                      example: 66cb5f4d0318528063e77c98
-                    createdAt:
-                      type: string
-                      format: date-time
-                      example: "2024-08-29T20:39:40.775Z"
-                    updatedAt:
-                      type: string
-                      format: date-time
-                      example: "2024-08-29T20:39:40.775Z"
   "400":
     description: Bad request
     content:
