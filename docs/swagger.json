@@ -440,8 +440,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -475,11 +474,6 @@
                     ],
                     "example": "personal",
                     "default": "personal"
-                  },
-                  "userId": {
-                    "description": "Contact's owner id",
-                    "type": "string",
-                    "example": "66a92312c1de214c68f17d10"
                   },
                   "photo": {
                     "description": "URL to contact's photo",
