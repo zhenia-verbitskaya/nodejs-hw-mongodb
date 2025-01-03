@@ -27,7 +27,7 @@ requestBody:
           email:
             type: string
             example: "nik@example.com"
-          isFavorite:
+          isFavourite:
             type: boolean
             example: false
           contactType:
